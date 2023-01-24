@@ -1,0 +1,51 @@
+nav{
+    width: 100%;
+    background-color: white;
+    height: 89px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    
+}
+
+.container{
+    display: flex;
+ 
+}
+
+ul{
+    display: flex;
+    list-style-type: none;
+}
+li{
+    text-decoration: none;
+    margin-left: 20px;
+
+}
+a{
+    text-decoration: none;
+}
+
+.ul{
+    margin-left: 100px;
+}
+
+.div{
+    justify-content: center;
+    align-items: center;
+    height: 60px !important;
+    margin-top: 100px;
+}
+
+input{
+    margin-top: 20px;
+    border-radius: 100px;
+}
+
+.bb{
+    width: 117px;
+    height: 40px;
+    margin-top: 20px;
+}
