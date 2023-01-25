@@ -1,0 +1,37 @@
+.for-hover{
+    height:550px ;
+    width:663px ;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+
+}
+
+.yazi{
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    display:none ;
+    
+}
+
+.cimg{
+    position: relative;
+}
+
+.cimg:hover .for-hover {
+    opacity: 0.7;
+    visibility: visible;
+    
+  }
+
+  .cimg:hover .for-hover .yazi {
+    display: block;
+    
+  }

@@ -2,6 +2,7 @@ import React from 'react'
 import './Sec3.scss'
 import { useState,useEffect } from 'react'
 import axios from 'axios'
+import Card from '../../Components/Card'
 
 function Sec3() {
 
@@ -9,6 +10,7 @@ function Sec3() {
     const [search,setSearch]=useState([])
     const [sort,setSort] = useState([])
     const [toogle,setToogle] = useState(true)
+    const [test,setTest]= useState(true)
 
     useEffect(()=>{axios.get("http://localhost:4000/pros")
     .then(res=>{
@@ -32,6 +34,13 @@ function Sec3() {
             setSort(datas.sort((a,b)=> b.price-a.price))
         }
     }
+
+
+    const handleSearch =(e)=>{
+      setTest(false)
+      const searchdata= datas.filter(x=>x.name.toLowerCase().includes(e.target.value.toLowerCase()))
+      setSearch(searchdata)
+    }
     
 
    
@@ -39,7 +48,7 @@ function Sec3() {
 
   return (
    <>
- <div className='col'style={{display:'flex',justifyContent:'center',marginTop:50}}> <input type='text' onChange={(e)=>{setSearch(e.target.value)}} ></input>
+ <div className='col'style={{display:'flex',justifyContent:'center',marginTop:50}}> <input type='text' onChange={handleSearch} ></input>
   <button className='btn btn-primary bb' onClick={handleSort}>Filter</button></div>
 
 
@@ -52,20 +61,24 @@ function Sec3() {
    
 
   
-
-
-  {datas.filter(data=>search ?? data.name.toLowerCase().includes(search?.toLowerCase())).map((data,index) => (
-    <div className="col-3" key={index}>
-     <img src={data.img}alt="sekil"  style={{height:270,width:255}} />
-     <p>{data.name}</p>
-     <p>{data.price}</p>
-    
-     <button className='btn btn-danger' onClick={()=>{handleDelete(data._id)}}>Delete</button>
+     
    
-  
 
-    </div>
-  ))}
+  {
+   test===true ?
+  datas.map((data,index) => (
+   
+    <Card key ={index} data={data} index={index} handleDelete={handleDelete}/>
+   
+  ))
+  
+  : search.map((data,index) => (
+   
+   <Card key ={index} data={data} index={index} handleDelete={handleDelete}/>
+  
+ ))
+ }
+  
     
 
     
